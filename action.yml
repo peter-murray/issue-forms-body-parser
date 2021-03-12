@@ -30,7 +30,7 @@ inputs:
   label_marker_end:
     description: The string that is used to identify the end of the form label field
     required: true
-    default: ">>"
+    default: "<<"
 
 outputs:
   payload:
