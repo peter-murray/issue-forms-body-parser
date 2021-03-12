@@ -1,0 +1,41 @@
+---
+name: Issue Form Body Parser
+description: Parses the body of an issue that was built using an Issue form definition
+author: peter-murray
+
+branding:
+  icon: alert-circle
+  color: blue
+
+inputs:
+  github_token:
+    description: The GitHub token that can be used to obtain the Issue via API lookup
+    default: ${{ github.token }}
+    required: true
+
+  issue_id:
+    description: The id of the issue to use to extract a payload from the body
+    required: true
+
+  separator:
+    description: The separator for the form sections in the issue
+    required: true
+    default: '###'
+
+  label_marker_start:
+    description: The string that is used to identify the start of the form label field
+    required: true
+    default: ">>"
+
+  label_marker_end:
+    description: The string that is used to identify the end of the form label field
+    required: true
+    default: ">>"
+
+outputs:
+  payload:
+    description: The extracted payload data from the issue body labels in JSON encoded form
+
+runs:
+  using: node12
+  main: dist/index.js

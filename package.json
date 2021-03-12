@@ -1,0 +1,30 @@
+{
+  "name": "issue-body-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js",
+    "test": "mocha ./src/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peter-murray/issue-forms-body-parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peter-murray/issue-forms-body-parser/issues"
+  },
+  "homepage": "https://github.com/peter-murray/issue-forms-body-parser#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.27.0",
+    "chai": "^4.3.3",
+    "mocha": "^8.3.2"
+  }
+}
