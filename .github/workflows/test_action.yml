@@ -19,6 +19,7 @@ jobs:
         id: parse
         uses: ./
         with:
+          issue_id: ${{ github.event.issue.number }}
           separator: '###'
           label_marker_start: '>>'
           label_marker_end: '>>'
