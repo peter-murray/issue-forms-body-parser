@@ -28,13 +28,13 @@ octodemo/template-demo-github-user-search
 
 ## Parameters
 
-|Input                      | Description                             |
-| --------------------------| --------------------------------------- |
-| `github_token`            | PAT(Personal Access Token) for accessing the issues on the repository, defaults to `${{ github.token }}`. |
-| `issue_id`                | The id of the issue to load the content from.|
-| `separator`               | The separator between the fields defaults to `###` which is markdown h3 which GitHub is currently defaulting to |
-| `label_marker_start`      | The characters to match for the beginning of a label |
-| `label_marker_end`        | The characters to match for the ending of a label |
+|Input                      | Required | Description                             |
+| --------------------------| -------- | ------------------------------- |
+| `github_token`            | `true`   | PAT(Personal Access Token) for accessing the issues on the repository, defaults to `${{ github.token }}`. |
+| `issue_id`                | `true`   | The id of the issue to load the content from.|
+| `separator`               | `false`  | The separator between the fields defaults to `###` which is markdown h3 which GitHub is currently defaulting to |
+| `label_marker_start`      | `true`   | The characters to match for the beginning of a label |
+| `label_marker_end`        | `true`   | The characters to match for the ending of a label |
 
 
 ## Usage
