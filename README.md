@@ -45,7 +45,7 @@ Usage to parse the message example above:
 steps:
   - name: Run Issue form parser
     id: parse
-    uses: peter-murray/issue-forms-body-parser@v1
+    uses: peter-murray/issue-forms-body-parser@v1.0.0
     with:
       issue_id: ${{ github.event.issue.number }}
       separator: '###'
