@@ -5905,6 +5905,8 @@ module.exports = class IssueUtil {
 /***/ 657:
 /***/ ((module) => {
 
+// The entry when a user has not provided a value in response
+const NO_RESPONSE = '_No response_';
 
 module.exports = class Parser {
 
@@ -5937,7 +5939,6 @@ module.exports = class Parser {
     }
 
     const parts = content.split(this.separator);
-    // console.log(JSON.stringify(parts, null, 2));
 
     const result = {};
     if (parts) {
@@ -5946,11 +5947,13 @@ module.exports = class Parser {
       parts.forEach(part => {
         const match = tagRegex.exec(part);
 
-        // console.log(`Match on ${part}:`);
-        // console.log(JSON.stringify(match, null, 2));
-
         if (match) {
-          result[match[1]] = match[2];
+          if (match[2].trim() === NO_RESPONSE) {
+            // no reponse provided in the payload, report no value
+            result[match[1]] = undefined;
+          } else {
+            result[match[1]] = match[2];
+          }
         }
       });
     }
