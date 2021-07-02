@@ -5933,6 +5933,15 @@ module.exports = class Parser {
     return new RegExp(regexMatch);
   }
 
+  get checkBoxRegex() {
+    const open = this._config.tag.open
+      , close = this._config.tag.close
+      , regexMatch = `\\- \\[(\\w|\\s)\\] ${open}(.*)${close}`
+      ;
+
+    return new RegExp(regexMatch);
+  }
+
   parse(content) {
     if (!content || content.trim().length === 0) {
       return undefined;
@@ -5943,16 +5952,22 @@ module.exports = class Parser {
     const result = {};
     if (parts) {
       const tagRegex = this.tagRegex;
+      const checkBoxRegex = this.checkBoxRegex;
 
       parts.forEach(part => {
-        const match = tagRegex.exec(part);
+        const tagMatch = tagRegex.exec(part);
 
-        if (match) {
-          if (match[2].trim() === NO_RESPONSE) {
+        if (tagMatch) {
+          if (tagMatch[2].trim() === NO_RESPONSE) {
             // no reponse provided in the payload, report no value
-            result[match[1]] = undefined;
+            result[tagMatch[1]] = undefined;
           } else {
-            result[match[1]] = match[2];
+            result[tagMatch[1]] = tagMatch[2];
+          }
+        } else {
+          const checkBoxMatch = checkBoxRegex.exec(part);
+          if (checkBoxMatch) {
+            result[checkBoxMatch[2]] = checkBoxMatch[1] === 'X'
           }
         }
       });
