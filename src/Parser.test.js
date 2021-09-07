@@ -13,6 +13,16 @@ describe('Parser', () => {
       validateResults(parser.parse(loadFileData('demo_same_open_close.txt')));
     });
 
+    it('should parse prem test', () => {
+      const parser = new Parser('###', ' ', '\n');
+      const payload = parser.parse(loadFileData('prem_test.txt'));
+
+      expect(payload).to.have.property('Regional Director').to.equal('@abc-xyz');
+      expect(payload).to.have.property('Contract Type').to.equal('Premier');
+      expect(payload).to.have.property('Account Manager').to.equal('@abc-msft');
+      expect(payload).to.have.property('Main Engagement Issue').to.equal('https://some.website.com/view');
+    });
+
 
     it('should parse different open/close tags', () => {
       const parser = new Parser('###', '>>', '<<');

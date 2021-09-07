@@ -1,0 +1,19 @@
+### >>>demo-repository-owner<<<
+
+octodemo
+
+### >>>demo-repository-name<<<
+
+pm-testing-workflow-003
+
+### >>>template<<<
+
+octodemo/template-bookstore-v2
+
+### >>>template-branch<<<
+
+_No response_
+
+### Demo custom configuration
+
+- [X] >>>demo-config-create-project<<<

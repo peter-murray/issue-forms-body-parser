@@ -1,0 +1,54 @@
+### Regional Director
+
+@abc-xyz
+
+### Contract Type
+
+Premier
+
+### Services Sales Representative
+
+@aaaaaaaaa
+
+### Account Manager
+
+@abc-msft
+
+### Project Manager
+
+_No response_
+
+### Solution Engineer
+
+_No response_
+
+### Customer Time Zone
+
+EST
+
+### Main Engagement Issue
+
+https://some.website.com/view
+
+### Implementation
+
+- [ ] GHES
+- [X] GHEC
+
+### Migrations
+
+_No response_
+
+### 1. What repository management platforms does the customer currently have? What version?
+
+eg. Perforce, TFVC, etc.
+
+### 3. What languages are in use by these applications?
+
+_No response_
+
+### Action Items
+
+- [ ] Solution Architect Assigned
+- [ ] Delivery Engineer Assigned
+- [ ] Schedule Scoping Call
