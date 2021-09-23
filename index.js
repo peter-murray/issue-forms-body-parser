@@ -7,6 +7,11 @@ function getRequiredInputValue(key) {
   return core.getInput(key, { required: true });
 }
 
+function getOptionalInputValue(key) {
+  return core.getInput(key, { required: false });
+}
+
+
 async function run() {
   try {
     const issueId = getRequiredInputValue('issue_id')
@@ -14,13 +19,14 @@ async function run() {
       , parserSeparator = getRequiredInputValue('separator')
       , parserMarkerStart = getRequiredInputValue('label_marker_start')
       , parserMarkerEnd = getRequiredInputValue('label_marker_end')
+      , repository = getOptionalInputValue('repository')
       ;
 
     const issueUtil = new IssueUtil(githubToken)
       , parser = new Parser(parserSeparator, parserMarkerStart, parserMarkerEnd)
       ;
 
-    const issueBody = await issueUtil.getIssueBody(issueId);
+    const issueBody = await issueUtil.getIssueBody(issueId, repository);
     
     const parsed = parser.parse(issueBody);
     if (parsed !== undefined) {
