@@ -9,10 +9,9 @@ module.exports = class IssueUtil {
     this.octokit = github.getOctokit(token);
   }
 
-  getIssueBody(id, repository = null) {
-    var target_repo = repository ?
-      {owner: repository.split('/')[0], repo: repository.split('/')[1]} :
-      {...github.context.repo};
+  getIssueBody(id, repository) {
+    const [owner, repo] = repository.split('/');
+    const target_repo = repository ? {owner, repo} : github.context.repo;
     
     return this.octokit.issues.get({
       ...target_repo,
