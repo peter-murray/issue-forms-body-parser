@@ -13,6 +13,11 @@ inputs:
     default: ${{ github.token }}
     required: true
 
+  repository:
+    description: The GitHub repository where the issue lives
+    default: ${{ github.repository }}
+    required: true
+
   issue_id:
     description: The id of the issue to use to extract a payload from the body
     required: true
