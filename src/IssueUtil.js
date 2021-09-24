@@ -13,18 +13,19 @@ module.exports = class IssueUtil {
     const [owner, repo] = repository.split('/');
     const target_repo = repository ? {owner, repo} : github.context.repo;
 
-    return this.octokit.issues.get({
-      ...target_repo,
-      issue_number: id
-    }).then(result => {
-      console.log(result.status)
-      if (result.status !== 200) {
-        throw new Error(`Unexpected status code from retrieving issue: ${result.status}`);
-      }
-      console.log(result.data.body)
-      return result.data.body;
-    }).catch(err => {
-      throw new Error(`Repository... owner=${owner}, repo=${repo}`);
-    });
+    throw new Error(`Repository... owner=${owner}, repo=${repo}`);
+
+    // return this.octokit.issues.get({
+    //   ...target_repo,
+    //   issue_number: id
+    // }).then(result => {
+    //   if (result.status !== 200) {
+    //     throw new Error(`Unexpected status code from retrieving issue: ${result.status}`);
+    //   }
+
+    //   return result.data.body;
+    // }).catch(err => {
+      
+    // });
   }
 }
