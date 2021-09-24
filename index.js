@@ -14,12 +14,12 @@ function getOptionalInputValue(key) {
 
 async function run() {
   try {
-    const issueId = '42'// getRequiredInputValue('issue_id')
-      , githubToken = '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' // getRequiredInputValue('github_token')
-      , parserSeparator = '###'// getRequiredInputValue('separator')
-      , parserMarkerStart = '>>'// getRequiredInputValue('label_marker_start')
-      , parserMarkerEnd = '>>'// getRequiredInputValue('label_marker_end')
-      , repository = "bill-test-org/t-lint"// getOptionalInputValue('repository')
+    const issueId = getRequiredInputValue('issue_id')
+      , githubToken = getRequiredInputValue('github_token')
+      , parserSeparator = getRequiredInputValue('separator')
+      , parserMarkerStart = getRequiredInputValue('label_marker_start')
+      , parserMarkerEnd = getRequiredInputValue('label_marker_end')
+      , repository = getOptionalInputValue('repository')
       ;
 
     const issueUtil = new IssueUtil(githubToken)
