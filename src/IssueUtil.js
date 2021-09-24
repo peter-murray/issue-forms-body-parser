@@ -10,11 +10,9 @@ module.exports = class IssueUtil {
   }
 
   getIssueBody(id, repository) {
-    console.log(repository)
     const [owner, repo] = repository.split('/');
     const target_repo = repository ? {owner, repo} : github.context.repo;
-    console.log('about to start')
-    console.log(target_repo)
+
     return this.octokit.issues.get({
       ...target_repo,
       issue_number: id
@@ -26,7 +24,7 @@ module.exports = class IssueUtil {
       console.log(result.data.body)
       return result.data.body;
     }).catch(err => {
-      throw err;
+      throw new Error(`Repository... owner=${owner}, repo=${repo}`);
     });
   }
 }
