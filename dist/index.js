@@ -21,13 +21,14 @@ async function run() {
       , parserSeparator = getRequiredInputValue('separator')
       , parserMarkerStart = getRequiredInputValue('label_marker_start')
       , parserMarkerEnd = getRequiredInputValue('label_marker_end')
+      , repository = getRequiredInputValue('repository')
       ;
 
     const issueUtil = new IssueUtil(githubToken)
       , parser = new Parser(parserSeparator, parserMarkerStart, parserMarkerEnd)
       ;
 
-    const issueBody = await issueUtil.getIssueBody(issueId);
+    const issueBody = await issueUtil.getIssueBody(issueId, repository);
     
     const parsed = parser.parse(issueBody);
     if (parsed !== undefined) {
@@ -5885,9 +5886,11 @@ module.exports = class IssueUtil {
     this.octokit = github.getOctokit(token);
   }
 
-  getIssueBody(id) {
+  getIssueBody(id, repository) {
+    const [owner, repo] = repository.split('/');
+
     return this.octokit.issues.get({
-      ...github.context.repo,
+      ...{owner, repo},
       issue_number: id
     }).then(result => {
       if (result.status !== 200) {
@@ -5899,6 +5902,7 @@ module.exports = class IssueUtil {
     });
   }
 }
+
 
 /***/ }),
 
