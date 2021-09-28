@@ -14,13 +14,22 @@ describe('Parser', () => {
     });
 
     it('should parse prem test', () => {
-      const parser = new Parser('###', ' ', '\n');
+      const parser = new Parser('###', '>>', '<<');
       const payload = parser.parse(loadFileData('prem_test.txt'));
 
-      expect(payload).to.have.property('Regional Director').to.equal('@abc-xyz');
-      expect(payload).to.have.property('Contract Type').to.equal('Premier');
-      expect(payload).to.have.property('Account Manager').to.equal('@abc-msft');
-      expect(payload).to.have.property('Main Engagement Issue').to.equal('https://some.website.com/view');
+      expect(payload).to.have.property('Location').to.equal('London');
+      expect(payload).to.have.property('Partner Organization Name').to.equal('all-your-consult');
+      expect(payload).to.have.property('Status').to.equal('🟢 Green - On track to meet goals 🏝️');
+
+      expect(payload).to.have.property('Languages').to.be.instanceOf(Object);
+      const languages = payload.Languages;
+      expect(Object.keys(languages)).to.have.length(11);
+      expect(languages).to.have.property('English').to.be.true;
+      expect(languages).to.have.property('French').to.be.true;
+      expect(languages).to.have.property('Italian').to.be.true;
+      expect(languages).to.have.property('German').to.be.false;
+      expect(languages).to.have.property('Korean').to.be.false;
+      expect(languages).to.have.property('Spanish').to.be.false
     });
 
 
@@ -40,28 +49,59 @@ describe('Parser', () => {
     });
 
 
-    it('should parse a checkbox that is disabled', () => {
+    // it('should parse a checkbox that is disabled', () => {
+    //   const parser = new Parser('###', '>>>', '<<<');
+    //   const results = parser.parse(loadFileData('demo_checkbox_disabled.txt'));
+
+    //   expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
+    //   expect(results).to.have.property('demo-repository-name').to.equal('pm-testing-workflow-004');
+    //   expect(results).to.have.property('template').to.equal('octodemo/template-bookstore-v2');
+    //   expect(results).to.have.property('template-branch').to.be.undefined;
+    //   expect(results).to.have.property('demo-config-create-project').to.be.false;
+    // });
+
+    // it('should parse a checkbox that is enabled', () => {
+    //   const parser = new Parser('###', '>>>', '<<<');
+    //   const results = parser.parse(loadFileData('demo_checkbox_enabled.txt'));
+
+    //   expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
+    //   expect(results).to.have.property('demo-repository-name').to.equal('pm-testing-workflow-003');
+    //   expect(results).to.have.property('template').to.equal('octodemo/template-bookstore-v2');
+    //   expect(results).to.have.property('template-branch').to.be.undefined;
+    //   expect(results).to.have.property('demo-config-create-project').to.be.true;
+    // });
+
+    it('should parse a checkbox example', () => {
       const parser = new Parser('###', '>>>', '<<<');
-      const results = parser.parse(loadFileData('demo_checkbox_disabled.txt'));
+      const results = parser.parse(loadFileData('example_with_checkboxes.txt'));
 
       expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
-      expect(results).to.have.property('demo-repository-name').to.equal('pm-testing-workflow-004');
+      expect(results).to.have.property('demo-repository-name').to.equal('test');
       expect(results).to.have.property('template').to.equal('octodemo/template-bookstore-v2');
       expect(results).to.have.property('template-branch').to.be.undefined;
-      expect(results).to.have.property('demo-config-create-project').to.be.false;
+      expect(results).to.have.property('Demo custom configuration');
+
+      const config = results['Demo custom configuration'];
+      expect(config).to.have.property('testing').to.be.true;
+      expect(config).to.have.property('projects_enabled').to.be.false;
+      expect(config).to.have.property('issues_enabled').to.be.true;
     });
 
-    it('should parse a checkbox that is enabled', () => {
+    it('should parse checkbox example 2', () => {
       const parser = new Parser('###', '>>>', '<<<');
-      const results = parser.parse(loadFileData('demo_checkbox_enabled.txt'));
+      const results = parser.parse(loadFileData('example_with_checkboxes_2.txt'));
 
       expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
-      expect(results).to.have.property('demo-repository-name').to.equal('pm-testing-workflow-003');
+      expect(results).to.have.property('demo-repository-name').to.equal('test');
       expect(results).to.have.property('template').to.equal('octodemo/template-bookstore-v2');
       expect(results).to.have.property('template-branch').to.be.undefined;
-      expect(results).to.have.property('demo-config-create-project').to.be.true;
-    });
+      expect(results).to.have.property('Demo custom configuration');
 
+      const config = results['Demo custom configuration'];
+      expect(config).to.have.property('testing').to.be.false;
+      expect(config).to.have.property('projects_enabled').to.be.false;
+      expect(config).to.have.property('issues_enabled').to.be.true;
+    });
   });
 });
 

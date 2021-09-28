@@ -23,15 +23,12 @@ module.exports = class Parser {
       , regexMatch = `${open}(.*)${close}(?:\\s)+(.*)`
       ;
 
-    return new RegExp(regexMatch);
+    const tagRegex = new RegExp(regexMatch, 'sm');
+    return tagRegex;
   }
 
   get checkBoxRegex() {
-    const open = this._config.tag.open
-      , close = this._config.tag.close
-      , regexMatch = `\\- \\[(\\w|\\s)\\] ${open}(.*)${close}`
-      ;
-
+    const regexMatch = `\\- \\[(\\s|X|x)\\] (.*)`;
     return new RegExp(regexMatch);
   }
 
@@ -40,6 +37,7 @@ module.exports = class Parser {
       return undefined;
     }
 
+    // Split up the payload on the specified line separator
     const parts = content.split(this.separator);
 
     const result = {};
@@ -51,16 +49,28 @@ module.exports = class Parser {
         const tagMatch = tagRegex.exec(part);
 
         if (tagMatch) {
-          if (tagMatch[2].trim() === NO_RESPONSE) {
+          const value = tagMatch[2].trim();
+
+          if (value === NO_RESPONSE) {
             // no reponse provided in the payload, report no value
             result[tagMatch[1]] = undefined;
           } else {
-            result[tagMatch[1]] = tagMatch[2];
-          }
-        } else {
-          const checkBoxMatch = checkBoxRegex.exec(part);
-          if (checkBoxMatch) {
-            result[checkBoxMatch[2]] = checkBoxMatch[1] === 'X'
+            // We may have a checkboxes that need to be parsed so check for those
+            if (checkBoxRegex.exec(value)) {
+              // Split the content as we may have multiple lines of checkboxes
+              const contentLines = value.split('\n');
+              const checkboxData = {};
+
+              contentLines.forEach(line => {
+                const parsed = checkBoxRegex.exec(line);
+                if (parsed) {
+                  checkboxData[parsed[2]] = parsed[1] === 'X' || parsed[1] === 'x';
+                }
+              });
+              result[tagMatch[1]] = checkboxData;
+            } else {
+              result[tagMatch[1]] = value;
+            }
           }
         }
       });

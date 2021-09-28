@@ -1,54 +1,81 @@
-### Regional Director
+### >>Status<<
 
-@abc-xyz
+🟢 Green - On track to meet goals 🏝️
 
-### Contract Type
+### >>Partner Organization Name<<
 
-Premier
+all-your-consult
 
-### Services Sales Representative
+### >>Location<<
 
-@aaaaaaaaa
+London
 
-### Account Manager
+### >>Country<<
 
-@abc-msft
+United Kingdom
 
-### Project Manager
+### >>Markets/Regions Served<<
 
-_No response_
+Hertfordshire
 
-### Solution Engineer
+### >>Services Contact<<
 
-_No response_
+@joebloggs
 
-### Customer Time Zone
+### >>Email Address<<
 
-EST
+user@email.com
 
-### Main Engagement Issue
-
-https://some.website.com/view
-
-### Implementation
-
-- [ ] GHES
-- [X] GHEC
-
-### Migrations
+### >>Best Assigned Roles<<
 
 _No response_
 
-### 1. What repository management platforms does the customer currently have? What version?
-
-eg. Perforce, TFVC, etc.
-
-### 3. What languages are in use by these applications?
+### >>Is this resource a Technical Trainer<<
 
 _No response_
 
-### Action Items
+### >>Is this resource a FastTrack Consultant<<
 
-- [ ] Solution Architect Assigned
-- [ ] Delivery Engineer Assigned
-- [ ] Schedule Scoping Call
+_No response_
+
+### >>SSPA Certified through Microsoft<<
+
+_No response_
+
+### >>Microsoft Partner Certified<<
+
+_No response_
+
+### >>Languages<<
+
+- [X] English
+- [X] French
+- [ ] German
+- [X] Italian
+- [ ] Spanish
+- [ ] Portuguese
+- [ ] Chinese/Mandarin or Cantonese
+- [ ] Korean
+- [ ] Japanese
+- [ ] Hindi
+- [ ] Other Languages
+
+### >>Government/Local Security Clearance<<
+
+eg. Tokyo, Japan
+
+### >>Completed Verification Workshop<<
+
+_No response_
+
+### >>Attended GitHub Technical Bootcamp<<
+
+_No response_
+
+### >>List any other GitHub Training & Enablement<<
+
+eg. Sales Training...
+
+### >>CAM GitHub Handle<<
+
+_No response_

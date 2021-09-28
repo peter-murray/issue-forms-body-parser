@@ -37,6 +37,30 @@ octodemo/template-demo-github-user-search
 | `label_marker_end`        | `true`   | The characters to match for the ending of a label |
 
 
+## Checkbox parsing
+If you have checkboxes rendered in the template, this action will provide them as an object of the name of the checkbox label associated with a `true` or `false` value.
+
+e.g.
+```
+### >>Languages<<
+
+- [X] English
+- [X] French
+- [ ] German
+```
+
+would result in a JSON object that looks like this;
+
+```
+{
+  "Languages": {
+    "English": true,
+    "French": true,
+    "German": false
+  }
+}
+```
+
 ## Usage
 
 Usage to parse the message example above:
@@ -45,7 +69,7 @@ Usage to parse the message example above:
 steps:
   - name: Run Issue form parser
     id: parse
-    uses: peter-murray/issue-forms-body-parser@v1.1.0
+    uses: peter-murray/issue-forms-body-parser@v2.0.0
     with:
       issue_id: ${{ github.event.issue.number }}
       separator: '###'

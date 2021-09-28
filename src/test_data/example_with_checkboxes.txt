@@ -1,0 +1,21 @@
+### >>>demo-repository-owner<<<
+
+octodemo
+
+### >>>demo-repository-name<<<
+
+test
+
+### >>>template<<<
+
+octodemo/template-bookstore-v2
+
+### >>>template-branch<<<
+
+_No response_
+
+### >>>Demo custom configuration<<<
+
+- [X] testing
+- [ ] projects_enabled
+- [X] issues_enabled
