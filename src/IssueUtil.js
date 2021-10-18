@@ -9,9 +9,11 @@ module.exports = class IssueUtil {
     this.octokit = github.getOctokit(token);
   }
 
-  getIssueBody(id) {
+  getIssueBody(id, repository) {
+    const [owner, repo] = repository.split('/');
+
     return this.octokit.issues.get({
-      ...github.context.repo,
+      ...{owner, repo},
       issue_number: id
     }).then(result => {
       if (result.status !== 200) {

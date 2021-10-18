@@ -32,6 +32,7 @@ octodemo/template-demo-github-user-search
 | --------------------------| -------- | ------------------------------- |
 | `github_token`            | `true`   | PAT(Personal Access Token) for accessing the issues on the repository, defaults to `${{ github.token }}`. |
 | `issue_id`                | `true`   | The id of the issue to load the content from.|
+| `repository`              | `false`  | The repository where the issue lives. Defaults to the current repository.|
 | `separator`               | `false`  | The separator between the fields defaults to `###` which is markdown h3 which GitHub is currently defaulting to |
 | `label_marker_start`      | `true`   | The characters to match for the beginning of a label |
 | `label_marker_end`        | `true`   | The characters to match for the ending of a label |
@@ -72,6 +73,7 @@ steps:
     uses: peter-murray/issue-forms-body-parser@v2.0.0
     with:
       issue_id: ${{ github.event.issue.number }}
+      repository: octokit/rest.js
       separator: '###'
       label_marker_start: '>>'
       label_marker_end: '<<'
