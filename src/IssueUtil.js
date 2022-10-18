@@ -10,7 +10,7 @@ module.exports = class IssueUtil {
   }
 
   getIssueBody(id) {
-    return this.octokit.issues.get({
+    return this.octokit.rest.issues.get({
       ...github.context.repo,
       issue_number: id
     }).then(result => {
