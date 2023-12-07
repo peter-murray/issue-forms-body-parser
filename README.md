@@ -31,6 +31,7 @@ octodemo/template-demo-github-user-search
 |Input                      | Required | Description                             |
 | --------------------------| -------- | ------------------------------- |
 | `github_token`            | `true`   | PAT(Personal Access Token) for accessing the issues on the repository, defaults to `${{ github.token }}`. |
+| `repository`              | `true`   | The fully qualified repository that has the issue, defaults to `${{ github.repository }}`. |
 | `issue_id`                | `true`   | The id of the issue to load the content from.|
 | `separator`               | `false`  | The separator between the fields defaults to `###` which is markdown h3 which GitHub is currently defaulting to |
 | `label_marker_start`      | `true`   | The characters to match for the beginning of a label |

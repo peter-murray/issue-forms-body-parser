@@ -28920,9 +28920,11 @@ module.exports = class IssueUtil {
     this.octokit = github.getOctokit(token);
   }
 
-  getIssueBody(id) {
+  async getIssueBody(repository, id) {
+    const repo = this.getRepoObject(repository);
+
     return this.octokit.rest.issues.get({
-      ...github.context.repo,
+      ...repo,
       issue_number: id
     }).then(result => {
       if (result.status !== 200) {
@@ -28932,6 +28934,22 @@ module.exports = class IssueUtil {
     }).catch(err => {
       throw err;
     });
+  }
+
+  getRepoObject(repository) {
+    if (!repository) {
+      throw new Error(`Repository must be specified, but was '${repository}'`);
+    }
+
+    const [owner, repo] = repository.split('/');
+    if (!repo) {
+      throw new Error(`The repository reference must be in the form of 'owner/repo', but suppied value was '${repository}'`);
+    }
+
+    return {
+      owner,
+      repo
+    }
   }
 }
 
@@ -30924,13 +30942,14 @@ async function run() {
       , parserSeparator = getRequiredInputValue('separator')
       , parserMarkerStart = getRequiredInputValue('label_marker_start')
       , parserMarkerEnd = getRequiredInputValue('label_marker_end')
+      , repository = getRequiredInputValue('repository')
       ;
 
     const issueUtil = new IssueUtil(githubToken)
       , parser = new Parser(parserSeparator, parserMarkerStart, parserMarkerEnd)
       ;
 
-    const issueBody = await issueUtil.getIssueBody(issueId);
+    const issueBody = await issueUtil.getIssueBody(repository, issueId);
     
     const parsed = parser.parse(issueBody);
     if (parsed !== undefined) {
