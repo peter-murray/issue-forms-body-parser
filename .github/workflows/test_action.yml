@@ -9,7 +9,7 @@ jobs:
     name: Test Action
     if: contains(github.event.issue.labels.*.name, 'test-action')
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout
@@ -25,5 +25,7 @@ jobs:
           label_marker_end: '>>'
 
       - name: Show parsed data
+        env:
+          parsed_data: ${{ steps.parse.outputs.payload }}
         run: |
-          echo "${{ steps.parse.outputs.payload }}"
+          echo '${{ env.parsed_data }}'

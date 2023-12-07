@@ -69,7 +69,7 @@ Usage to parse the message example above:
 steps:
   - name: Run Issue form parser
     id: parse
-    uses: peter-murray/issue-forms-body-parser@v2.0.0
+    uses: peter-murray/issue-forms-body-parser@v4.0.0
     with:
       issue_id: ${{ github.event.issue.number }}
       separator: '###'
@@ -77,8 +77,10 @@ steps:
       label_marker_end: '<<'
 
   - name: Show parsed data JSON
+    env:
+      parsed_data: ${{ steps.parse.outputs.payload }}
     run: |
-      echo "${{ steps.parse.outputs.payload }}"
+      echo '${{ env.parsed_data }}'
 ```
 
 The JSON payload that is extracted would look like this:
