@@ -24,8 +24,8 @@ jobs:
           label_marker_start: '>>'
           label_marker_end: '>>'
 
-      - name: Show parsed data
+      - name: Show parsed data JSON
         env:
           parsed_data: ${{ steps.parse.outputs.payload }}
         run: |
-          echo '${{ env.parsed_data }}'
+          echo "$parsed_data"
