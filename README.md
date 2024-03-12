@@ -81,7 +81,7 @@ steps:
     env:
       parsed_data: ${{ steps.parse.outputs.payload }}
     run: |
-      echo '${{ env.parsed_data }}'
+      echo "$parsed_data"
 ```
 
 The JSON payload that is extracted would look like this:
