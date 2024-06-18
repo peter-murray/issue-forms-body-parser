@@ -37,6 +37,11 @@ inputs:
     required: true
     default: "<<"
 
+  generate_summary:
+    description: If true, will generate a summary of the form data in the payload
+    required: false
+    default: false
+
 outputs:
   payload:
     description: The extracted payload data from the issue body labels in JSON encoded form

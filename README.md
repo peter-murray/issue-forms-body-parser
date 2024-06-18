@@ -36,6 +36,7 @@ octodemo/template-demo-github-user-search
 | `separator`               | `false`  | The separator between the fields defaults to `###` which is markdown h3 which GitHub is currently defaulting to |
 | `label_marker_start`      | `true`   | The characters to match for the beginning of a label |
 | `label_marker_end`        | `true`   | The characters to match for the ending of a label |
+| `generate_summary`        | `false`  | Generate an actions summary with the parsed data, optional and defaults to `false` |
 
 
 ## Checkbox parsing
