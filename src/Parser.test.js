@@ -102,6 +102,16 @@ describe('Parser', () => {
       expect(config).to.have.property('projects_enabled').to.be.false;
       expect(config).to.have.property('issues_enabled').to.be.true;
     });
+
+    it('should parse inputs with hidden data', () => {
+      const parser = new Parser('###', '>>', '<<');
+      const results = parser.parse(loadFileData('example_with_hidden_metadata.txt'));
+
+      expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
+      expect(results).to.have.property('template-type').to.equal('repository');
+      expect(results).to.have.property('template-owner').to.equal('octodemo-resources');
+      expect(results).to.have.property('template-repo').to.equal('tmpl_bookstore_v3');
+    });
   });
 });
 

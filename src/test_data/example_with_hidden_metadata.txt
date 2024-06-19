@@ -1,0 +1,17 @@
+### >>demo-repository-owner<<
+
+octodemo
+
+### >>template-type<<
+
+repository
+
+### >>template-owner<<
+
+octodemo-resources
+
+### >>template-repo<<
+
+tmpl_bookstore_v3
+
+<!--boostrap {"uuid": "4129d60f-db50-4227-a404-c2f4416623cd"}-->

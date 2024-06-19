@@ -49,7 +49,7 @@ module.exports = class Parser {
         const tagMatch = tagRegex.exec(part);
 
         if (tagMatch) {
-          const value = tagMatch[2].trim();
+          const value = removeHiddenContent(tagMatch[2]).trim();
 
           if (value === NO_RESPONSE) {
             // no reponse provided in the payload, report no value
@@ -78,4 +78,8 @@ module.exports = class Parser {
 
     return result;
   }
+}
+
+function removeHiddenContent(value) {
+  return value.replace(/<!--.*?-->/g, '');
 }
