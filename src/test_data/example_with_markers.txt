@@ -1,0 +1,15 @@
+### >>demo-repository-owner<<
+
+octodemo
+
+### >>template-type<<
+
+repository
+
+### >>template-owner<<
+
+octodemo-resources
+
+### >>template-repo<<
+
+Markes: >> is start and is << end

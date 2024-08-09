@@ -20,7 +20,7 @@ module.exports = class Parser {
   get tagRegex() {
     const open = this._config.tag.open
       , close = this._config.tag.close
-      , regexMatch = `${open}(.*)${close}(?:\\s)+(.*)`
+      , regexMatch = `${open}(.*?)${close}(?:\\s)+(.*)`
       ;
 
     const tagRegex = new RegExp(regexMatch, 'sm');

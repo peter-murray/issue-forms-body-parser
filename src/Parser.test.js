@@ -112,6 +112,16 @@ describe('Parser', () => {
       expect(results).to.have.property('template-owner').to.equal('octodemo-resources');
       expect(results).to.have.property('template-repo').to.equal('tmpl_bookstore_v3');
     });
+
+    it('should parse inputs with markers in the data', () => {
+      const parser = new Parser('###', '>>', '<<');
+      const results = parser.parse(loadFileData('example_with_markers.txt'));
+
+      expect(results).to.have.property('demo-repository-owner').to.equal('octodemo');
+      expect(results).to.have.property('template-type').to.equal('repository');
+      expect(results).to.have.property('template-owner').to.equal('octodemo-resources');
+      expect(results).to.have.property('template-repo').to.equal('Markes: >> is start and is << end');
+    });
   });
 });
 
