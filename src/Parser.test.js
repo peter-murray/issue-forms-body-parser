@@ -1,7 +1,8 @@
-const path = require('path')
-  , fs = require('fs')
-  , expect = require('chai').expect
-  , Parser = require('./Parser')
+import * as path from 'node:path';
+import * as fs from 'node:fs';
+import { expect } from 'chai';
+import { describe, it } from 'vitest';
+import { Parser } from './Parser.js';
   ;
 
 describe('Parser', () => {

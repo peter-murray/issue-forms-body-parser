@@ -47,5 +47,5 @@ outputs:
     description: The extracted payload data from the issue body labels in JSON encoded form
 
 runs:
-  using: node20
+  using: node24
   main: dist/index.js

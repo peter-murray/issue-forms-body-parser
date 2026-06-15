@@ -1,6 +1,6 @@
-const github = require('@actions/github');
+import * as github from '@actions/github';
 
-module.exports = class IssueUtil {
+export class IssueUtil {
 
   constructor(token) {
     if (!token) {

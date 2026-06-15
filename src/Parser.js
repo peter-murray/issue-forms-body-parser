@@ -1,7 +1,7 @@
 // The entry when a user has not provided a value in response
 const NO_RESPONSE = '_No response_';
 
-module.exports = class Parser {
+export class Parser {
 
   constructor(separator, openTag, closeTag) {
     this._config = {
