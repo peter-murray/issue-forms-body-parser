@@ -1,7 +1,6 @@
-const core = require('@actions/core')
-  , IssueUtil = require('./src/IssueUtil')
-  , Parser = require('./src/Parser')
-  ;
+import * as core from '@actions/core';
+import * as issueUtil from './src/IssueUtil.js';
+import * as Parse from './src/Parser.js';
 
 function getRequiredInputValue(key) {
   return core.getInput(key, { required: true });
