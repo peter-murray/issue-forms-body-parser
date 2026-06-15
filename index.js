@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
-import * as issueUtil from './src/IssueUtil.js';
-import * as Parse from './src/Parser.js';
+import { IssueUtil } from './src/IssueUtil.js';
+import { Parser } from './src/Parser.js';
 
 function getRequiredInputValue(key) {
   return core.getInput(key, { required: true });
